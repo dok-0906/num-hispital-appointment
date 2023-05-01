@@ -12,10 +12,6 @@ const AppointmentSchema = new mongoose.Schema({
         require: [true, "Хэрэглэгчийн id-ийг оруулна уу!!!"],
         
     },
-    AvAppName: {
-        type: String,
-        
-    },
     app_date: {
         type: Date,
         
