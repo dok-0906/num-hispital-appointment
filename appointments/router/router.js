@@ -6,10 +6,12 @@ const {
   createAppointment,
   updateAppointment,
   deleteAppointment,
-  getUserAppointments
+  getUserAppointments,
+  getisAppointments
 } = require("../controller/controller");
 
 const router = express.Router();
+router.route('/is_app').get(protect, getisAppointments);
 router.route("/getUser")
   .get(protect, getUserAppointments);
 router.route('/')

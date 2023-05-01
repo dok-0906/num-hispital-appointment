@@ -5,7 +5,6 @@ exports.getisApp = async (req, res, next) => {
   try {
   const select = req.query.select;
   delete req.query.select;
-  console.log(req.query)
   const avapointment = await AvAppointment.find(req.query, select);
 
     res.status(200).json({

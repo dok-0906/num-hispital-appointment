@@ -1,6 +1,25 @@
 const Appointment = require("../model/appointment");
 const axios = require("axios");
 
+exports.getisAppointments = async (req, res, next) => {
+  try {
+    const select = req.query.select;
+    
+  console.log(req.query)
+  delete req.query.select;
+  const apointment = await Appointment.find(req.query, select);
+    res.status(200).json({
+      success: true,
+      data: apointment,
+    });
+  } catch(err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
+  }
+}
+
 exports.getAppointments = async (req, res, next) => {
   try {
     const appointment = await Appointment.find();
