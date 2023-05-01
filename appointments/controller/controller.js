@@ -67,7 +67,6 @@ exports.createAppointment = async (req, res, next) => {
       if(response.data.data.is_app===false){
         req.body.ServiceName = response.data.data.ServiceName;
         req.body.app_date = response.data.data.app_date;
-        req.body.AvAppName = response.data.data.AvAppName;
       const appointment = await Appointment.create(req.body);
       axios.put('http://localhost:6565/api/v1/av_appointment/'+req.body.Avappointment_id, {
       is_app: true
