@@ -63,12 +63,12 @@ exports.getAppointment = async (req, res, next) => {
 exports.createAppointment = async (req, res, next) => {
   
     try {
-      const response = await axios.get('http://localhost:6565/api/v1/av_appointment/'+req.body.Avappointment_id);
+      const response = await axios.get('http://134.209.96.67:6565/api/v1/av_appointment/'+req.body.Avappointment_id);
       if(response.data.data.is_app===false){
         req.body.ServiceName = response.data.data.ServiceName;
         req.body.app_date = response.data.data.app_date;
       const appointment = await Appointment.create(req.body);
-      axios.put('http://localhost:6565/api/v1/av_appointment/'+req.body.Avappointment_id, {
+      axios.put('http://134.209.96.67:6565/api/v1/av_appointment/'+req.body.Avappointment_id, {
       is_app: true
       });
       res.status(200).json({
@@ -98,7 +98,7 @@ exports.updateAppointment = async (req, res, next) => {
       runValidators: true
     });
     if(appointment){
-      axios.put('http://localhost:6565/api/v1/av_appointment/'+req.body.Avappointment_id, {
+      axios.put('http://134.209.96.67:6565/api/v1/av_appointment/'+req.body.Avappointment_id, {
       is_app: true
       });
       res.status(200).json({
@@ -128,7 +128,7 @@ exports.deleteAppointment = async (req, res, next) => {
     if(appointment){ 
     const apointment = await Appointment.findByIdAndDelete(req.params.id);
     if(apointment){
-      axios.put('http://localhost:6565/api/v1/av_appointment/'+appointment.Avappointment_id, {
+      axios.put('http://134.209.96.67:6565/api/v1/av_appointment/'+appointment.Avappointment_id, {
       is_app: false
       });
       res.status(200).json({

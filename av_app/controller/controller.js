@@ -62,7 +62,7 @@ exports.getAvAppointment = async (req, res, next) => {
 exports.createAvAppointment = async (req, res, next) => {
 
     try {
-  const response = await axios.get('http://localhost:3535/api/v1/service/'+req.body.service_id);
+  const response = await axios.get('http://134.209.96.67:3535/api/v1/service/'+req.body.service_id);
   
   if(response.data.data._id!=req.body.service_id){
     res.status(400).json({
@@ -74,7 +74,7 @@ exports.createAvAppointment = async (req, res, next) => {
       req.body.ServiceName = response.data.data.ServiceName;
       console.log(req.body.ServiceName);
       const avapointment = await AvAppointment.create(req.body);
-        // axios.put('http://localhost:3535/api/v1/service/'+req.body.service_id, {
+        // axios.put('http://134.209.96.67:3535/api/v1/service/'+req.body.service_id, {
         // ServiceName: response.data.data.ServiceName
         // });
         res.status(200).json({
